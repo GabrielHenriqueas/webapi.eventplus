@@ -176,7 +176,7 @@ namespace webapi.event_.Migrations
                     b.Property<Guid>("IdTipoUsuario")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("NomeUsuario")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("VARCHAR(100)");
 
