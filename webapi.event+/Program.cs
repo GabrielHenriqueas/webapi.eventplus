@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Adiciona o serviço de controllers
 builder.Services.AddControllers();
 
-//Adiciona o serviço de autenticação JWT Bearer
+//Adiciona o serviço de autenticação JWT Bearer (forma de autenticação)
 builder.Services.AddAuthentication(options => {
     options.DefaultChallengeScheme = "JwtBearer";
     options.DefaultAuthenticateScheme = "JwtBearer";
@@ -28,7 +28,7 @@ builder.Services.AddAuthentication(options => {
         ValidateLifetime = true,
 
         //Forma de criptografia e ainda validação da chave de autenticação
-        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("event-chave-autenticacao")),
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("projeto-event-webapi-chave-autenticacao")),
 
         //Valida o tempo de expiração do token
         ClockSkew = TimeSpan.FromMinutes(5),
@@ -48,8 +48,8 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "API InLock",
-        Description = "API para Gerenciamento de Estudios e Jogos",
+        Title = "API Event+",
+        Description = "API para Gerenciamento de Eventos - Backend API",
         Contact = new OpenApiContact
         {
             Name = "Gabriel Henrique Silva",
@@ -58,8 +58,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 
     //Configura o Swagger para usar o arquivo XML gerado
-    //var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 
     //Usando autenticação no Swagger
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()

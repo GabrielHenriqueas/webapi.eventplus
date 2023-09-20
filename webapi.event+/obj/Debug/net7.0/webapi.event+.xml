@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.event+</name>
+    </assembly>
+    <members>
+        <member name="T:webapi.event_.Migrations.BD_v2">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.BD_v2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.BD_v2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Migrations.BD_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:webapi.event_.Utils.Criptografia.GeraHash(System.String)">
+            <summary>
+            Gera uma Hash a partir de uma senha
+            </summary>
+            <param name="senha">Senha que receberá a hash</param>
+            <returns>Senha Criptografada com a hash</returns>
+        </member>
+        <member name="M:webapi.event_.Utils.Criptografia.CompararHash(System.String,System.String)">
+            <summary>
+            Verifica se a hash da senha informada é igual á hash salva do bd
+            </summary>
+            <param name="senhaForm">Senha passada no form de Login</param>
+            <param name="senhaBanco">Senha cadastrada no banco</param>
+            <returns>True or False</returns>
+        </member>
+    </members>
+</doc>

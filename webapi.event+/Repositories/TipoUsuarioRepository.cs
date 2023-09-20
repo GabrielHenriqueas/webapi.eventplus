@@ -6,30 +6,42 @@ namespace webapi.event_.Repositories
 {
     public class TipoUsuarioRepository : ITipoUsuarioRepository
     {
-        private readonly EventContext _eventContext;
+        private readonly EventContext ctx;
 
         public TipoUsuarioRepository()
         {
-            _eventContext = new EventContext();
+            ctx = new EventContext();
         }
 
         public void Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
-            throw new NotImplementedException();
+            TipoUsuario tipoBuscado = ctx.TipoUsuario.FirstOrDefault(x => x.IdTipoUsuario == id)!;
+
+            if (tipoBuscado != null)
+            {
+                tipoBuscado.Titulo = tipoUsuario.Titulo;
+            }
+
+            ctx.TipoUsuario.Update(tipoBuscado!);
+
+            ctx.SaveChanges();
         }
 
         public TipoUsuario BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            List<TipoUsuario> tipoUsuarios = ctx.TipoUsuario.ToList();
+
+            TipoUsuario tipoUsuario = tipoUsuarios.FirstOrDefault(x => x.IdTipoUsuario == id)!;
+
+            return tipoUsuario;
         }
 
         public void Cadastrar(TipoUsuario tipoUsuario)
         {
             try
             {
-                _eventContext.TipoUsuario.Add(tipoUsuario);
-
-                _eventContext.SaveChanges();
+                ctx.TipoUsuario.Add(tipoUsuario);
+                ctx.SaveChanges();
             }
             catch (Exception)
             {
@@ -40,12 +52,19 @@ namespace webapi.event_.Repositories
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            TipoUsuario tipoUsuario = ctx.TipoUsuario.FirstOrDefault(x => x.IdTipoUsuario == id)!;
+
+            ctx.TipoUsuario.Remove(tipoUsuario);
+
+            ctx.SaveChanges();
+
         }
 
         public List<TipoUsuario> Listar()
         {
-            throw new NotImplementedException();
+            List<TipoUsuario> tipoUsuarios = ctx.TipoUsuario.ToList();
+
+            return tipoUsuarios;
         }
     }
 }

@@ -113,3 +113,5 @@ C:\Users\42351028856\Desktop\api.eventplus\webapi.event+\obj\Debug\net7.0\refint
 C:\Users\42351028856\Desktop\api.eventplus\webapi.event+\obj\Debug\net7.0\webapi.event+.pdb
 C:\Users\42351028856\Desktop\api.eventplus\webapi.event+\obj\Debug\net7.0\webapi.event+.genruntimeconfig.cache
 C:\Users\42351028856\Desktop\api.eventplus\webapi.event+\obj\Debug\net7.0\ref\webapi.event+.dll
+C:\Users\42351028856\Desktop\api.eventplus\webapi.event+\bin\Debug\net7.0\webapi.event+.xml
+C:\Users\42351028856\Desktop\api.eventplus\webapi.event+\obj\Debug\net7.0\webapi.event+.xml

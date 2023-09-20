@@ -40,16 +40,17 @@ namespace webapi.event_.Controllers
                 var claims = new[]
                 {
                     //formato da claim(tipo, valor)
+                    new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!),
+                    new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.Nome!),
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
-                    new Claim(ClaimTypes.Role, usuarioBuscado.TipoUsuario.Titulo),
+                    new Claim(ClaimTypes.Role, usuarioBuscado.TipoUsuario!.Titulo!),
                     
                     //existe a possibilidade de criar uma claim personalizada
-                    new Claim("Claim Personalizada", "Valor Personalizado")
+                    //new Claim("Claim Personalizada", "Valor Personalizado")
                 };
 
                 //2 - Definir a chave de acesso ao token
-                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("event-chave-autenticacao"));
+                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("projeto-event-webapi-chave-autenticacao"));
 
                 //3 - Definir as credenciais do token (Header)
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -74,7 +75,6 @@ namespace webapi.event_.Controllers
                 );
 
                 //5 - retornar o token criado
-
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token)
