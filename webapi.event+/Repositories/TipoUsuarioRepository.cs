@@ -13,6 +13,8 @@ namespace webapi.event_.Repositories
             ctx = new EventContext();
         }
 
+        //==================================================================
+
         public void Atualizar(Guid id, TipoUsuario tipoUsuario)
         {
             TipoUsuario tipoBuscado = ctx.TipoUsuario.FirstOrDefault(x => x.IdTipoUsuario == id)!;
@@ -27,6 +29,8 @@ namespace webapi.event_.Repositories
             ctx.SaveChanges();
         }
 
+        //==================================================================
+
         public TipoUsuario BuscarPorId(Guid id)
         {
             List<TipoUsuario> tipoUsuarios = ctx.TipoUsuario.ToList();
@@ -36,11 +40,14 @@ namespace webapi.event_.Repositories
             return tipoUsuario;
         }
 
+        //==================================================================
+
         public void Cadastrar(TipoUsuario tipoUsuario)
         {
             try
             {
                 ctx.TipoUsuario.Add(tipoUsuario);
+
                 ctx.SaveChanges();
             }
             catch (Exception)
@@ -49,6 +56,8 @@ namespace webapi.event_.Repositories
                 throw;
             }
         }
+
+        //==================================================================
 
         public void Deletar(Guid id)
         {
@@ -59,6 +68,8 @@ namespace webapi.event_.Repositories
             ctx.SaveChanges();
 
         }
+
+        //==================================================================
 
         public List<TipoUsuario> Listar()
         {

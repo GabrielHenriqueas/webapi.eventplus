@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using webapi.event_.Domains;
 using webapi.event_.Interfaces;
 using webapi.event_.Repositories;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace webapi.event_.Controllers
 {
@@ -25,34 +24,34 @@ namespace webapi.event_.Controllers
     [Produces("application/json")]
 
 
-    public class TipoUsuarioController : ControllerBase
+    public class TipoEventoController : ControllerBase
     {
         /// <summary>
         /// Objeto que irá receber os métodos definidos na interface
         /// </summary>
-        private ITipoUsuarioRepository _tipoUsuarioRepository { get; set; }
+        private ITipoEventoRepository _tipoEventoRepository { get; set; }
 
         /// <summary>
-        /// Instância do objeto _tipoUsuarioRepository para que haja referência aos mêtodos no repositório
+        /// Instância do objeto _filmeRepository para que haja referência aos mêtodos no repositório
         /// </summary>
-        public TipoUsuarioController()
+        public TipoEventoController()
         {
-            _tipoUsuarioRepository = new TipoUsuarioRepository();
+            _tipoEventoRepository = new TipoEventoRepository();
         }
 
         //================================================================================================
 
         /// <summary>
-        /// Endpoint que acessa o método de cadastrar Tipo de Usuário
+        /// Endpoint que acessa o método de cadastrar Tipo de Evento
         /// </summary>
-        /// <param name="tipoUsuario">Objeto recebido na requisição</param>
+        /// <param name="tipoEvento">Objeto recebido na requisição</param>
         /// <returns>Status Code</returns>
         [HttpPost]
-        public IActionResult Post(TipoUsuario tipoUsuario)
+        public IActionResult Post(TipoEvento tipoEvento)
         {
             try
             {
-                _tipoUsuarioRepository.Cadastrar(tipoUsuario);
+                _tipoEventoRepository.Cadastrar(tipoEvento);
 
                 return StatusCode(201);
             }
@@ -64,24 +63,23 @@ namespace webapi.event_.Controllers
         }
 
         //================================================================================================
-
         /// <summary>
-        /// Endpoint que acessa o método de listar os Tipos de Usuário
+        /// Endpoint que acessa o método de listar os Tipos de Evento
         /// </summary>
-        /// <returns>Lista de TipoUsuario e um status code</returns>
+        /// <returns>Lista de TipoEvento e um status code</returns>
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
                 //Cria uma Lista para receber Tipos de Usuário
-                List<TipoUsuario> ListarTipoUsuario = _tipoUsuarioRepository.Listar();
+                List<TipoEvento> ListarTipoEvento = _tipoEventoRepository.Listar();
 
                 //retorna o status code 200 ok e a lista de jogos no formato JSON
-                return StatusCode(200, ListarTipoUsuario);
+                return StatusCode(200, ListarTipoEvento);
 
-                //Retorna apenas Lista de Tipos de Usuário
-                //return Ok(ListarTipoUsuario);
+                //Retorna apenas Lista de Tipos de Evento
+                //return Ok(ListarTipoEvento);
             }
             catch (Exception e)
             {
@@ -95,14 +93,14 @@ namespace webapi.event_.Controllers
         /// Atualizar Tipo de Usuário existente passando o seu id
         /// </summary>
         /// <param name="id">Id do Objeto a ser atualizado</param>
-        /// <param name="tipoUsuario">Objeto Tipo de Usuário com as novas informações</param>
+        /// <param name="tipoEvento">Objeto Tipo de Usuário com as novas informações</param>
         /// <returns>Status Code</returns>
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, TipoUsuario tipoUsuario)
+        public IActionResult Put(Guid id, TipoEvento tipoEvento)
         {
             try
             {
-                _tipoUsuarioRepository.Atualizar(id, tipoUsuario);
+                _tipoEventoRepository.Atualizar(id, tipoEvento);
 
                 return StatusCode(200);
             }
@@ -120,7 +118,7 @@ namespace webapi.event_.Controllers
         {
             try
             {
-                _tipoUsuarioRepository.Deletar(id);
+                _tipoEventoRepository.Deletar(id);
 
                 return StatusCode(204);
             }
@@ -130,5 +128,6 @@ namespace webapi.event_.Controllers
                 return BadRequest(e.Message);
             }
         }
+
     }
 }
