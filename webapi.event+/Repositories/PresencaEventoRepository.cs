@@ -1,33 +1,82 @@
-﻿using webapi.event_.Domains;
+﻿using webapi.event_.Contexts;
+using webapi.event_.Domains;
 using webapi.event_.Interfaces;
 
 namespace webapi.event_.Repositories
 {
     public class PresencaEventoRepository : IPresencaEventoRepository
     {
+        private readonly EventContext ctx;
+
+        public PresencaEventoRepository()
+        {
+            ctx = new EventContext();
+        }
+
+        //==================================================================
+
         public void Atualizar(Guid id, PresencaEvento presencaEvento)
         {
-            throw new NotImplementedException();
+            PresencaEvento presencaBuscada = ctx.PresencaEvento.FirstOrDefault(x => x.IdPresencaEvento == id)!;
+
+            if (presencaBuscada != null)
+            {
+                presencaBuscada.Situacao = presencaEvento.Situacao;
+                presencaBuscada.Usuario = presencaEvento.Usuario;
+                presencaBuscada.Evento = presencaEvento.Evento;
+
+                ctx.PresencaEvento.Update(presencaBuscada!);
+
+                ctx.SaveChanges();
+            }
         }
+
+        //==================================================================
 
         public PresencaEvento BuscarPorId(Guid id)
         {
-            throw new NotImplementedException();
+            List<PresencaEvento> presencas = ctx.PresencaEvento.ToList();
+
+            PresencaEvento presenca = presencas.FirstOrDefault(x => x.IdPresencaEvento == id)!;
+
+            return presenca;
         }
+
+        //==================================================================
 
         public void Cadastrar(PresencaEvento presencaEvento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ctx.PresencaEvento.Add(presencaEvento);
+
+                ctx.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
+        //==================================================================
 
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            PresencaEvento presencaEvento = ctx.PresencaEvento.FirstOrDefault(x => x.IdPresencaEvento == id)!;
+
+            ctx.PresencaEvento.Remove(presencaEvento);
+
+            ctx.SaveChanges();
         }
+
+        //==================================================================
 
         public List<PresencaEvento> Listar()
         {
-            throw new NotImplementedException();
+            List<PresencaEvento> presencas = ctx.PresencaEvento.ToList();
+
+            return presencas;
         }
     }
 }

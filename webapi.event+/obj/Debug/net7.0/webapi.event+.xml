@@ -4,6 +4,86 @@
         <name>webapi.event+</name>
     </assembly>
     <members>
+        <member name="P:webapi.event_.Controllers.EventoController._eventoRepository">
+            <summary>
+            Objeto que irá receber os métodos definidos na interface
+            </summary>
+        </member>
+        <member name="M:webapi.event_.Controllers.EventoController.#ctor">
+            <summary>
+            Instância do objeto _tipoUsuarioRepository para que haja referência aos mêtodos no repositório
+            </summary>
+        </member>
+        <member name="M:webapi.event_.Controllers.EventoController.Put(System.Guid,webapi.event_.Domains.Evento)">
+            <summary>
+            Atualizar Tipo de Usuário existente passando o seu id
+            </summary>
+            <param name="id">Id do Objeto a ser atualizado</param>
+            <param name="evento">Objeto Tipo de Usuário com as novas informações</param>
+            <returns></returns>
+        </member>
+        <member name="M:webapi.event_.Controllers.EventoController.Delete(System.Guid)">
+            <summary>
+            Deletar o Objeto pelo seu Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:webapi.event_.Controllers.InstituicaoController">
+            <summary>
+            Define que a rota de uma requisição será no seguinte formato
+            dominio/api/nomeController
+            exemplo: http://localhost:5000/api/Genero
+            </summary>
+        </member>
+        <member name="P:webapi.event_.Controllers.InstituicaoController._instituicaoRepository">
+            <summary>
+            Objeto que irá receber os métodos definidos na interface
+            </summary>
+        </member>
+        <member name="M:webapi.event_.Controllers.InstituicaoController.#ctor">
+            <summary>
+            Instância do objeto _instituicaoRepository para que haja referência aos mêtodos no repositório
+            </summary>
+        </member>
+        <member name="M:webapi.event_.Controllers.InstituicaoController.Post(webapi.event_.Domains.Instituicao)">
+            <summary>
+            Endpoint que acessa o método de cadastrar Instituição
+            </summary>
+            <param name="instituicao">Objeto recebido na requisição</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.Controllers.InstituicaoController.Get">
+            <summary>
+            Endpoint que acessa o método de listar as Instituições
+            </summary>
+            <returns>Lista de Instituicao e um status code</returns>
+        </member>
+        <member name="M:webapi.event_.Controllers.InstituicaoController.Put(System.Guid,webapi.event_.Domains.Instituicao)">
+            <summary>
+            Atualizar Instituição existente passando o seu id
+            </summary>
+            <param name="id">Id do Objeto a ser atualizado</param>
+            <param name="instituicao">Objeto Tipo de Usuário com as novas informações</param>
+            <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.Controllers.InstituicaoController.Delete(System.Guid)">
+            <summary>
+            Deletar o Objeto pelo seu Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:webapi.event_.Controllers.PresencaEventoController._presencaEventoRepository">
+            <summary>
+            Objeto que irá receber os métodos definidos na interface
+            </summary>
+        </member>
+        <member name="M:webapi.event_.Controllers.PresencaEventoController.#ctor">
+            <summary>
+            Instância do objeto _presencaEventoRepository para que haja referência aos mêtodos no repositório
+            </summary>
+        </member>
         <member name="T:webapi.event_.Controllers.TipoEventoController">
             <summary>
             Define que a rota de uma requisição será no seguinte formato
@@ -56,7 +136,7 @@
         </member>
         <member name="M:webapi.event_.Controllers.TipoUsuarioController.#ctor">
             <summary>
-            Instância do objeto _filmeRepository para que haja referência aos mêtodos no repositório
+            Instância do objeto _tipoUsuarioRepository para que haja referência aos mêtodos no repositório
             </summary>
         </member>
         <member name="M:webapi.event_.Controllers.TipoUsuarioController.Post(webapi.event_.Domains.TipoUsuario)">
@@ -79,6 +159,13 @@
             <param name="id">Id do Objeto a ser atualizado</param>
             <param name="tipoUsuario">Objeto Tipo de Usuário com as novas informações</param>
             <returns>Status Code</returns>
+        </member>
+        <member name="M:webapi.event_.Controllers.TipoUsuarioController.Delete(System.Guid)">
+            <summary>
+            Deletar o Objeto pelo seu Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:webapi.event_.Migrations.BD_v2">
             <inheritdoc />

@@ -17,14 +17,16 @@ namespace webapi.event_.Repositories
 
         public void Atualizar(Guid id, Instituicao instituicao)
         {
-            Instituicao instuicaoBuscada = ctx.Instituicao.FirstOrDefault(x => x.IdInstituicao == id)!;
+            Instituicao instituicaoBuscada = ctx.Instituicao.FirstOrDefault(x => x.IdInstituicao == id)!;
 
-            if (instuicaoBuscada != null)
+            if (instituicaoBuscada != null)
             {
-                instituicaoBuscada.Titulo = instituicao.Titulo;
+                instituicaoBuscada.NomeFantasia = instituicao.NomeFantasia;
+                instituicaoBuscada.CNPJ = instituicao.CNPJ;
+                instituicaoBuscada.Endereco = instituicao.Endereco;
             }
 
-            ctx.Instituicao.Update(instuicaoBuscada!);
+            ctx.Instituicao.Update(instituicaoBuscada!);
 
             ctx.SaveChanges();
         }

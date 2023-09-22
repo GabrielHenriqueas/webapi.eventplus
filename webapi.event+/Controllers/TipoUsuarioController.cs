@@ -77,7 +77,7 @@ namespace webapi.event_.Controllers
                 //Cria uma Lista para receber Tipos de Usuário
                 List<TipoUsuario> ListarTipoUsuario = _tipoUsuarioRepository.Listar();
 
-                //retorna o status code 200 ok e a lista de jogos no formato JSON
+                //retorna o status code 200 ok e a lista de TipoUsuario no formato JSON
                 return StatusCode(200, ListarTipoUsuario);
 
                 //Retorna apenas Lista de Tipos de Usuário
@@ -114,7 +114,11 @@ namespace webapi.event_.Controllers
         }
 
         //================================================================================================
-
+        /// <summary>
+        /// Deletar o Objeto pelo seu Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {

@@ -62,5 +62,70 @@ namespace webapi.event_.Controllers
         }
 
         //================================================================================================
+        /// <summary>
+        /// Endpoint que acessa o método de listar as Instituições
+        /// </summary>
+        /// <returns>Lista de Instituicao e um status code</returns>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                //Cria uma Lista para receber Instituições
+                List<Instituicao> ListarInstituicao = _instituicaoRepository.Listar();
+                //retorna o status code 200 ok e a lista de instituicao no formato JSON
+                return Ok(ListarInstituicao);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
+        //================================================================================================
+        /// <summary>
+        /// Atualizar Instituição existente passando o seu id
+        /// </summary>
+        /// <param name="id">Id do Objeto a ser atualizado</param>
+        /// <param name="instituicao">Objeto Tipo de Usuário com as novas informações</param>
+        /// <returns>Status Code</returns>
+        [HttpPut("{id}")]
+        public IActionResult Put(Guid id, Instituicao instituicao)
+        {
+            try
+            {
+                _instituicaoRepository.Atualizar(id, instituicao);
+
+                return StatusCode(204);
+            }
+            catch (Exception e)
+            {
+
+               return BadRequest(e.Message);
+            }
+        }
+
+        //================================================================================================
+        /// <summary>
+        /// Deletar o Objeto pelo seu Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _instituicaoRepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
