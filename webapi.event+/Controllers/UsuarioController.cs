@@ -18,6 +18,8 @@ namespace webapi.event_.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        //================================================================================================
+
         [HttpPost]
         public IActionResult Post(Usuario usuario)
         {
@@ -33,5 +35,8 @@ namespace webapi.event_.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        //================================================================================================
+
     }
 }

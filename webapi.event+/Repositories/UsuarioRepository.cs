@@ -122,17 +122,11 @@ namespace webapi.event_.Repositories
             ctx.SaveChanges();
         }
 
-        //==================================================================
-
         public List<Usuario> Listar()
         {
-            List<Usuario> usuarios = ctx.Usuario.ToList();
-
-            return usuarios;
+            throw new NotImplementedException();
         }
 
         //==================================================================
-
-
     }
 }
